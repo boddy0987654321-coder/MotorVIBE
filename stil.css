@@ -154,3 +154,57 @@ body {
   text-align: center;
   line-height: 1.6;
 }
+
+.masina-card.modern {
+  width: 48%;               
+  margin: 1%;               
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: inline-block;    
+  vertical-align: top;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.masina-card.modern img {
+  width: 100%;
+  height: 180px;             
+  object-fit: cover;         
+  display: block;
+}
+
+.masina-info {
+  padding: 20px;
+}
+
+.masina-info .categorie {
+  display: inline-block;
+  font-size: 12px;
+  color: #4A90E2;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.masina-info h3 {
+  font-size: 18px;
+  margin: 0 0 8px 0;
+  color: #222;
+}
+
+.masina-info .autor {
+  font-size: 13px;
+  color: #999;
+  margin: 0 0 12px 0;
+}
+
+.masina-info .descriere {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+  margin: 0;
+}
+
+
