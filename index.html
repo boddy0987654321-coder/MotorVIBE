@@ -1,155 +1,650 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MotorVIBE</title>
-  <link rel="stylesheet" href="stil.css" />
-   <link rel="icon" type="image/x-icon" href="imagini/img5.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotorVIBE - Ultimate Automotive Experience</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
 </head>
 <body>
-<div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <input type="text" placeholder="Search..">
-</div>
-
-<section class="masini-section">
-  <h2>New Models</h2>
-  <div class="masini-grid">
-
-    <div class="masina-card">
-      <img src="imagini/img3.jpg" alt="Mercedes">
-      <div class="masina-info">
-        <span class="categorie">Mercedes</span>
-        <p class="autor">Rickie Baroch - June 3, 2025</p>
-        <h3>One of Saturn’s largest rings may be newer than anyone</h3>
-      </div>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loader-content">
+            <div class="loader-car">
+                <i class="fas fa-car"></i>
+            </div>
+            <h2>MotorVIBE</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
     </div>
 
-    <div class="masina-card">
-      <img src="imagini/img2.jpg" alt="Porsche">
-      <div class="masina-info">
-        <span class="categorie">Porsche</span>
-        <p class="autor">Rickie Baroch - June 24, 2025</p>
-        <h3>One of Saturn’s largest rings may be newer than anyone</h3>
-      </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-car-side"></i>
+                <span>MotorVIBE</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span>Acasă</span>
+                </a>
+                <a href="#models" class="nav-link" data-section="models">
+                    <i class="fas fa-car"></i>
+                    <span>Modele</span>
+                </a>
+                <a href="#brands" class="nav-link" data-section="brands">
+                    <i class="fas fa-flag"></i>
+                    <span>Branduri</span>
+                </a>
+                <a href="#reviews" class="nav-link" data-section="reviews">
+                    <i class="fas fa-star"></i>
+                    <span>Reviews</span>
+                </a>
+                <a href="#news" class="nav-link" data-section="news">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Noutăți</span>
+                </a>
+                <a href="#contact" class="nav-link" data-section="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Caută mașini..." id="searchInput">
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
+            <div class="nav-hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#home" class="mobile-nav-link active">
+                <i class="fas fa-home"></i>
+                <span>Acasă</span>
+            </a>
+            <a href="#models" class="mobile-nav-link">
+                <i class="fas fa-car"></i>
+                <span>Modele</span>
+            </a>
+            <a href="#brands" class="mobile-nav-link">
+                <i class="fas fa-flag"></i>
+                <span>Branduri</span>
+            </a>
+            <a href="#reviews" class="mobile-nav-link">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="#news" class="mobile-nav-link">
+                <i class="fas fa-newspaper"></i>
+                <span>Noutăți</span>
+            </a>
+            <a href="#contact" class="mobile-nav-link">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </div>
     </div>
 
-    <div class="masina-card">
-      <img src="imagini/img1.jpg" alt="Audi">
-      <div class="masina-info">
-        <span class="categorie">Audi</span>
-        <p class="autor">Rickie Baroch - June 6, 2025</p>
-        <h3>One of Saturn’s largest rings may be newer than anyone</h3>
-      </div>
+    <!-- Hero Section -->
+    <section id="home" class="section active">
+        <div class="hero-section">
+            <div class="hero-background">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80')"></div>
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span>Premium Automotive</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="title-line">Descoperă</span>
+                        <span class="title-line highlight">Lumea Mașinilor</span>
+                        <span class="title-line">de Vis</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Explorează cele mai exclusive modele auto, review-uri detaliate și tehnologii revolutionare. 
+                        De la supercaruri electrice la luxury SUV-uri.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="scrollToSection('models')">
+                            <span>Explorează Colecția</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="btn btn-secondary" onclick="openVideoModal()">
+                            <i class="fas fa-play"></i>
+                            <span>Watch Story</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-car-side"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>500+</h3>
+                            <p>Modele Testate</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>50+</h3>
+                            <p>Branduri Premium</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>100k+</h3>
+                            <p>Utilizatori</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-scroll">
+                <div class="scroll-indicator">
+                    <span>Scroll to Explore</span>
+                    <div class="scroll-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-slider-controls">
+                <button class="slider-btn prev" onclick="changeHeroSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next" onclick="changeHeroSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Showcase -->
+    <section id="brands" class="section">
+        <div class="brands-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Branduri de Prestigiu</h2>
+                    <p class="section-subtitle">Colaborăm cu cele mai exclusive manufacturi auto din lume</p>
+                </div>
+
+                <div class="brands-grid">
+                    <div class="brand-card" data-brand="mercedes">
+                        <div class="brand-logo">
+                            <i class="fab fa-mercedes"></i>
+                        </div>
+                        <h3>Mercedes-Benz</h3>
+                        <p>Inventing Automotive Luxury</p>
+                        <span class="brand-count">45 Modele</span>
+                    </div>
+
+                    <div class="brand-card" data-brand="porsche">
+                        <div class="brand-logo">
+                            <i class="fas fa-horse-head"></i>
+                        </div>
+                        <h3>Porsche</h3>
+                        <p>There is no Substitute</p>
+                        <span class="brand-count">32 Modele</span>
+                    </div>
+
+                    <div class="brand-card" data-brand="bmw">
+                        <div class="brand-logo">
+                            <i class="fab fa-bmw"></i>
+                        </div>
+                        <h3>BMW</h3>
+                        <p>The Ultimate Driving Machine</p>
+                        <span class="brand-count">38 Modele</span>
+                    </div>
+
+                    <div class="brand-card" data-brand="audi">
+                        <div class="brand-logo">
+                            <i class="fas fa-rings"></i>
+                        </div>
+                        <h3>Audi</h3>
+                        <p>Vorsprung durch Technik</p>
+                        <span class="brand-count">41 Modele</span>
+                    </div>
+
+                    <div class="brand-card" data-brand="lamborghini">
+                        <div class="brand-logo">
+                            <i class="fas fa-bull"></i>
+                        </div>
+                        <h3>Lamborghini</h3>
+                        <p>Expect the Unexpected</p>
+                        <span class="brand-count">18 Modele</span>
+                    </div>
+
+                    <div class="brand-card" data-brand="ferrari">
+                        <div class="brand-logo">
+                            <i class="fas fa-horse"></i>
+                        </div>
+                        <h3>Ferrari</h3>
+                        <p>We are the Competition</p>
+                        <span class="brand-count">22 Modele</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Models Gallery -->
+    <section id="models" class="section">
+        <div class="models-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Colecția Premium</h2>
+                    <p class="section-subtitle">Descoperă cele mai impresionante modele din portofoliul nostru</p>
+                </div>
+
+                <div class="models-controls">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">Toate Modelele</button>
+                        <button class="filter-tab" data-filter="electric">Electrice</button>
+                        <button class="filter-tab" data-filter="suv">SUV</button>
+                        <button class="filter-tab" data-filter="sport">Sport</button>
+                        <button class="filter-tab" data-filter="luxury">Luxury</button>
+                        <button class="filter-tab" data-filter="hybrid">Hibride</button>
+                    </div>
+
+                    <div class="sort-controls">
+                        <select id="sortSelect" class="sort-select">
+                            <option value="newest">Cele mai noi</option>
+                            <option value="price-high">Preț descrescător</option>
+                            <option value="price-low">Preț crescător</option>
+                            <option value="power">Putere</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="models-grid" id="modelsGrid">
+                    <!-- Models will be loaded dynamically -->
+                </div>
+
+                <div class="load-more-container">
+                    <button class="btn btn-outline" id="loadMoreBtn">
+                        <span>Încarcă mai multe</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section">
+        <div class="reviews-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Reviews & Testimoniale</h2>
+                    <p class="section-subtitle">Ce spun experții și clienții noștri despre experiența MotorVIBE</p>
+                </div>
+
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Alex Popescu</h4>
+                                <span>Editor Șef AutoMagazin</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "MotorVIBE a redefinit modul în care percepem review-urile auto. Detaliile tehnice, 
+                            fotografiile profesionale și analizele aprofundate fac din acest site o resursă 
+                            indispensabilă pentru orice pasionat de mașini."
+                        </p>
+                        <div class="review-car">
+                            <i class="fas fa-car"></i>
+                            <span>Testat: Mercedes EQS 580</span>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Maria Ionescu</h4>
+                                <span>Test Driver Profesionist</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Ca șofer profesionist, apreciez precizia și profesionalismul de la MotorVIBE. 
+                            Review-urile sunt obiective, testele sunt comprehensive, iar concluziile sunt 
+                            întotdeauna bine argumentate."
+                        </p>
+                        <div class="review-car">
+                            <i class="fas fa-car"></i>
+                            <span>Testat: Porsche 911 Turbo S</span>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Andrei Mihai</h4>
+                                <span>Inginer Automotive</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Abordarea tehnică a MotorVIBE este remarcabilă. Detaliile despre motoare, 
+                            transmisii și tehnologii sunt exacte și bine prezentate. O resursă valoroasă 
+                            pentru cei care înțeleg inginerie auto."
+                        </p>
+                        <div class="review-car">
+                            <i class="fas fa-car"></i>
+                            <span>Testat: BMW iX M60</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="section">
+        <div class="news-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Ultimele Noutăți</h2>
+                    <p class="section-subtitle">Rămâi la curent cu cele mai recente dezvoltări din lumea auto</p>
+                </div>
+
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Electric Revolution">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Tehnologie</span>
+                            <h3>Revoluția Electrică 2024</h3>
+                            <p class="news-excerpt">
+                                Cum tehnologia bateriilor va schimba industria auto în următorii 5 ani. 
+                                Analiză detaliată a noilor tehnologii și a impactului lor.
+                            </p>
+                            <div class="news-meta">
+                                <span class="news-date">15 Martie 2024</span>
+                                <span class="news-read-time">5 min citire</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Supercar Comparison">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Comparație</span>
+                            <h3>Supercaruri 2024: Câștigătorul</h3>
+                            <p class="news-excerpt">
+                                Porsche 911 Turbo S vs Lamborghini Huracán vs Ferrari Roma. 
+                                Care este alegerea noastră și de ce?
+                            </p>
+                            <div class="news-meta">
+                                <span class="news-date">12 Martie 2024</span>
+                                <span class="news-read-time">7 min citire</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Luxury EV">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Review</span>
+                            <h3>Mercedes EQS: Viitorul Luxului</h3>
+                            <p class="news-excerpt">
+                                Test complet cu noul Mercedes EQS. Performanță, comfort și tehnologie 
+                                într-un pachet electric revolutionar.
+                            </p>
+                            <div class="news-meta">
+                                <span class="news-date">10 Martie 2024</span>
+                                <span class="news-read-time">6 min citire</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Contactează-ne</h2>
+                    <p class="section-subtitle">Ai întrebări sau proiecte? Suntem aici să te ajutăm</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Adresă</h4>
+                                <p>Bd. Dacia 45, Chișinău, Moldova</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Telefon</h4>
+                                <p>+373 123 456 789</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>contact@motorvibe.md</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Program</h4>
+                                <p>Luni - Vineri: 9:00 - 18:00</p>
+                                <p>Sâmbătă: 10:00 - 14:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Numele tău" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email-ul tău" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subiect" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Mesajul tău" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Trimite Mesaj</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeVideoModal()">&times;</span>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Video Presentation Coming Soon</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="masina-card">
-      <img src="imagini/img4.jpg" alt="BMW">
-      <div class="masina-info">
-        <span class="categorie">BMW</span>
-        <p class="autor">Rickie Baroch - June 13, 2025</p>
-        <h3>One of Saturn’s largest rings may be newer than anyone</h3>
-      </div>
+    <!-- Car Details Modal -->
+    <div id="carModal" class="modal">
+        <div class="modal-content car-modal-content">
+            <span class="close-modal" onclick="closeCarModal()">&times;</span>
+            <div id="carModalBody"></div>
+        </div>
     </div>
 
-  </div>
- </section>
- <section id="about" class="section">
-  <div class="content-container">
-    <h2>Despre MotorVIBE</h2>
-    <p>MotorVIBE este platforma ta de încredere pentru știri și review-uri auto.</p>
-  </div>
-</section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-car-side"></i>
+                        <span>MotorVIBE</span>
+                    </div>
+                    <p>
+                        MotorVIBE este platforma ta premium pentru descoperirea, compararea și 
+                        înțelegerea lumii auto. Aducem pasiune pentru mașini într-o experiență digitală unică.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
 
-<section id="contact" class="section">
-  <div class="content-container">
-    <h2>Contact</h2>
-    <p>Email: contact@motorvibe.md</p>
-    <p>Telefon: +373 123 456 789</p>
-  </div>
-</section>
+                <div class="footer-section">
+                    <h4>Linkuri Rapide</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Acasă</a></li>
+                        <li><a href="#models">Modele</a></li>
+                        <li><a href="#brands">Branduri</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#news">Noutăți</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
 
-<div id="carModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div id="modalBody"></div>
-  </div>
-</div>
+                <div class="footer-section">
+                    <h4>Branduri</h4>
+                    <ul class="footer-links">
+                        <li><a href="#mercedes">Mercedes-Benz</a></li>
+                        <li><a href="#bmw">BMW</a></li>
+                        <li><a href="#audi">Audi</a></li>
+                        <li><a href="#porsche">Porsche</a></li>
+                        <li><a href="#lamborghini">Lamborghini</a></li>
+                        <li><a href="#ferrari">Ferrari</a></li>
+                    </ul>
+                </div>
 
-<script src="script.js"></script>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Abonează-te pentru noutăți exclusive și oferte speciale</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email-ul tău" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
 
-<div class="masina-card modern">
-  <img src="" alt="Audi RS6">
-  <div class="masina-info">
-    <span class="categorie">Vehicle</span>
-    <h3>One of Saturn’s largest rings may be newer than anyone</h3>
-    <p class="autor">Rickie Baroch - June 6, 2019</p>
-    <p class="descriere">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...</p>
-  </div>
-</div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MotorVIBE. Toate drepturile rezervate. | Dezvoltat cu <i class="fas fa-heart"></i> pentru pasionații auto</p>
+            </div>
+        </div>
+    </footer>
 
-<div class="masina-card modern">
-  <img src="" alt="BMW M2">
-  <div class="masina-info">
-    <span class="categorie">Vehicle</span>
-    <h3>One of Saturn’s largest rings may be newer than anyone</h3>
-    <p class="autor">Rickie Baroch - June 6, 2019</p>
-    <p class="descriere">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...</p>
-  </div>
-</div>
-
-<div class="masina-card modern">
-  <img src="" alt="BMW M2">
-  <div class="masina-info">
-    <span class="categorie">Vehicle</span>
-    <h3>One of Saturn’s largest rings may be newer than anyone</h3>
-    <p class="autor">Rickie Baroch - June 6, 2019</p>
-    <p class="descriere">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...</p>
-  </div>
-</div>
-
-<div class="masina-card modern">
-  <img src="" alt="BMW M2">
-  <div class="masina-info">
-    <span class="categorie">Vehicle</span>
-    <h3>One of Saturn’s largest rings may be newer than anyone</h3>
-    <p class="autor">Rickie Baroch - June 6, 2019</p>
-    <p class="descriere">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...</p>
-  </div>
-</div>
-
-<div class="masina-card modern ">
-  <img src="" alt="BMW M2">
-  <div class="masina-info">
-    <span class="categorie">Vehicle</span>
-    <h3>One of Saturn’s largest rings may be newer than anyone</h3>
-    <p class="autor">Rickie Baroch - June 6, 2019</p>
-    <p class="descriere">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...</p>
-  </div>
-</div>
-
-<div class="masina-card modern">
-  <img src="" alt="BMW M2">
-  <div class="masina-info">
-    <span class="categorie">Vehicle</span>
-    <h3>One of Saturn’s largest rings may be newer than anyone</h3>
-    <p class="autor">Rickie Baroch - June 6, 2019</p>
-    <p class="descriere">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...</p>
-  </div>
-</div>
-
-<div class="masina-card modern">
-  <img src="" alt="BMW M2">
-  <div class="masina-info">
-    <span class="categorie">Vehicle</span>
-    <h3>One of Saturn’s largest rings may be newer than anyone</h3>
-    <p class="autor">Rickie Baroch - June 6, 2019</p>
-    <p class="descriere">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...</p>
-  </div>
-</div>
-
+    <script src="script.js"></script>
 </body>
 </html>
