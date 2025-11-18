@@ -5,20 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MotorVIBE - Ultimate Automotive Experience</title>
     
-    <!-- Preload Critical Resources -->
     <link rel="preload" href="style.css" as="style">
     <link rel="preload" href="script.js" as="script">
-    
-    <!-- Main Styles -->
+ 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Favicon -->
+  
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
 </head>
 <body>
-    <!-- Loading Screen -->
     <div id="loadingScreen" class="loading-screen">
         <div class="loader-content">
             <div class="loader-car">
@@ -31,7 +27,6 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -84,7 +79,6 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-content">
             <a href="#home" class="mobile-nav-link active">
@@ -114,7 +108,6 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
     <section id="home" class="section active">
         <div class="hero-section">
             <div class="hero-background">
@@ -200,7 +193,6 @@
         </div>
     </section>
 
-    <!-- Brands Showcase -->
     <section id="brands" class="section">
         <div class="brands-section">
             <div class="container">
@@ -268,7 +260,6 @@
         </div>
     </section>
 
-    <!-- Models Gallery -->
     <section id="models" class="section">
         <div class="models-section">
             <div class="container">
@@ -298,7 +289,263 @@
                 </div>
 
                 <div class="models-grid" id="modelsGrid">
-                    <!-- Models will be loaded dynamically -->
+                    <div class="model-card" data-car-id="mercedes-eqs" data-category="electric luxury sedan">
+                        <div class="model-image">
+                            <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Mercedes EQS 580 4MATIC" loading="lazy">
+                            <div class="model-badge electric">
+                                <i class="fas fa-bolt"></i>
+                                Electric
+                            </div>
+                        </div>
+                        <div class="model-info">
+                            <div class="model-header">
+                                <span class="model-brand">Mercedes-Benz</span>
+                                <div class="model-price">€120,000</div>
+                            </div>
+                            <h3 class="model-name">Mercedes EQS 580 4MATIC</h3>
+                            <p class="model-description">Mercedes EQS 580 reprezintă vârful tehnologiei electrice, oferind autonomie extinsă și lux incomparabil.</p>
+                            
+                            <div class="model-specs">
+                                <div class="spec">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>516 CP</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-rocket"></i>
+                                    <span>4.3s 0-100 km/h</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-gauge-high"></i>
+                                    <span>210 km/h</span>
+                                </div>
+                            </div>
+                            
+                            <div class="model-actions">
+                                <button class="btn-details" onclick="openCarModal('mercedes-eqs')">
+                                    <i class="fas fa-eye"></i>
+                                    Vezi Detalii
+                                </button>
+                                <button class="btn-favorite" onclick="toggleFavorite('mercedes-eqs')">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="model-card" data-car-id="porsche-911-turbo" data-category="sport coupe">
+                        <div class="model-image">
+                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Porsche 911 Turbo S" loading="lazy">
+                            <div class="model-badge sport">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Sport
+                            </div>
+                        </div>
+                        <div class="model-info">
+                            <div class="model-header">
+                                <span class="model-brand">Porsche</span>
+                                <div class="model-price">€220,000</div>
+                            </div>
+                            <h3 class="model-name">Porsche 911 Turbo S</h3>
+                            <p class="model-description">Porsche 911 Turbo S este epitomul performanței pure. Cu accelerare rachetă și manevrabilitate precisă.</p>
+                            
+                            <div class="model-specs">
+                                <div class="spec">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>650 CP</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-rocket"></i>
+                                    <span>2.7s 0-100 km/h</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-gauge-high"></i>
+                                    <span>330 km/h</span>
+                                </div>
+                            </div>
+                            
+                            <div class="model-actions">
+                                <button class="btn-details" onclick="openCarModal('porsche-911-turbo')">
+                                    <i class="fas fa-eye"></i>
+                                    Vezi Detalii
+                                </button>
+                                <button class="btn-favorite" onclick="toggleFavorite('porsche-911-turbo')">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="model-card" data-car-id="bmw-ix" data-category="electric suv luxury">
+                        <div class="model-image">
+                            <img src="https://images.unsplash.com/photo-1621135802920-133df287f89c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="BMW iX xDrive50" loading="lazy">
+                            <div class="model-badge electric">
+                                <i class="fas fa-bolt"></i>
+                                Electric
+                            </div>
+                        </div>
+                        <div class="model-info">
+                            <div class="model-header">
+                                <span class="model-brand">BMW</span>
+                                <div class="model-price">€95,000</div>
+                            </div>
+                            <h3 class="model-name">BMW iX xDrive50</h3>
+                            <p class="model-description">BMW iX este SUV-ul electric care redefinește premium-ul în era digitală.</p>
+                            
+                            <div class="model-specs">
+                                <div class="spec">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>523 CP</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-rocket"></i>
+                                    <span>4.6s 0-100 km/h</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-gauge-high"></i>
+                                    <span>200 km/h</span>
+                                </div>
+                            </div>
+                            
+                            <div class="model-actions">
+                                <button class="btn-details" onclick="openCarModal('bmw-ix')">
+                                    <i class="fas fa-eye"></i>
+                                    Vezi Detalii
+                                </button>
+                                <button class="btn-favorite" onclick="toggleFavorite('bmw-ix')">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="model-card" data-car-id="audi-rs-etron" data-category="electric sport gran-turismo">
+                        <div class="model-image">
+                            <img src="https://images.unsplash.com/photo-1617814076660-1edc47113c02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Audi RS e-tron GT" loading="lazy">
+                            <div class="model-badge electric">
+                                <i class="fas fa-bolt"></i>
+                                Electric
+                            </div>
+                        </div>
+                        <div class="model-info">
+                            <div class="model-header">
+                                <span class="model-brand">Audi</span>
+                                <div class="model-price">€145,000</div>
+                            </div>
+                            <h3 class="model-name">Audi RS e-tron GT</h3>
+                            <p class="model-description">Audi RS e-tron GT este Grand Tourer-ul electric care concurează cu supercarurile.</p>
+                            
+                            <div class="model-specs">
+                                <div class="spec">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>637 CP</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-rocket"></i>
+                                    <span>3.1s 0-100 km/h</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-gauge-high"></i>
+                                    <span>250 km/h</span>
+                                </div>
+                            </div>
+                            
+                            <div class="model-actions">
+                                <button class="btn-details" onclick="openCarModal('audi-rs-etron')">
+                                    <i class="fas fa-eye"></i>
+                                    Vezi Detalii
+                                </button>
+                                <button class="btn-favorite" onclick="toggleFavorite('audi-rs-etron')">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="model-card" data-car-id="lamborghini-huracan" data-category="sport supercar">
+                        <div class="model-image">
+                            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Lamborghini Huracán EVO" loading="lazy">
+                            <div class="model-badge sport">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Sport
+                            </div>
+                        </div>
+                        <div class="model-info">
+                            <div class="model-header">
+                                <span class="model-brand">Lamborghini</span>
+                                <div class="model-price">€280,000</div>
+                            </div>
+                            <h3 class="model-name">Lamborghini Huracán EVO</h3>
+                            <p class="model-description">Lamborghini Huracán EVO este supercar-ul care aduce pasiunea italiană la cel mai înalt nivel.</p>
+                            
+                            <div class="model-specs">
+                                <div class="spec">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>640 CP</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-rocket"></i>
+                                    <span>2.9s 0-100 km/h</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-gauge-high"></i>
+                                    <span>325 km/h</span>
+                                </div>
+                            </div>
+                            
+                            <div class="model-actions">
+                                <button class="btn-details" onclick="openCarModal('lamborghini-huracan')">
+                                    <i class="fas fa-eye"></i>
+                                    Vezi Detalii
+                                </button>
+                                <button class="btn-favorite" onclick="toggleFavorite('lamborghini-huracan')">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="model-card" data-car-id="ferrari-roma" data-category="sport luxury gran-turismo">
+                        <div class="model-image">
+                            <img src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Ferrari Roma" loading="lazy">
+                            <div class="model-badge luxury">
+                                <i class="fas fa-crown"></i>
+                                Luxury
+                            </div>
+                        </div>
+                        <div class="model-info">
+                            <div class="model-header">
+                                <span class="model-brand">Ferrari</span>
+                                <div class="model-price">€250,000</div>
+                            </div>
+                            <h3 class="model-name">Ferrari Roma</h3>
+                            <p class="model-description">Ferrari Roma este Grand Tourer-ul care combină eleganța cu performanța.</p>
+                            
+                            <div class="model-specs">
+                                <div class="spec">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>620 CP</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-rocket"></i>
+                                    <span>3.4s 0-100 km/h</span>
+                                </div>
+                                <div class="spec">
+                                    <i class="fas fa-gauge-high"></i>
+                                    <span>320 km/h</span>
+                                </div>
+                            </div>
+                            
+                            <div class="model-actions">
+                                <button class="btn-details" onclick="openCarModal('ferrari-roma')">
+                                    <i class="fas fa-eye"></i>
+                                    Vezi Detalii
+                                </button>
+                                <button class="btn-favorite" onclick="toggleFavorite('ferrari-roma')">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="load-more-container">
@@ -311,7 +558,6 @@
         </div>
     </section>
 
-    <!-- Reviews Section -->
     <section id="reviews" class="section">
         <div class="reviews-section">
             <div class="container">
@@ -409,7 +655,6 @@
         </div>
     </section>
 
-    <!-- News Section -->
     <section id="news" class="section">
         <div class="news-section">
             <div class="container">
@@ -477,7 +722,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="contact-section">
             <div class="container">
@@ -553,7 +797,6 @@
         </div>
     </section>
 
-    <!-- Video Modal -->
     <div id="videoModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeVideoModal()">&times;</span>
@@ -565,8 +808,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Car Details Modal -->
     <div id="carModal" class="modal">
         <div class="modal-content car-modal-content">
             <span class="close-modal" onclick="closeCarModal()">&times;</span>
@@ -574,7 +815,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">

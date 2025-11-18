@@ -182,55 +182,6 @@ const CAR_DATABASE = {
             'Carbon Fiber Steering Wheel'
         ],
         description: 'Ferrari Roma este Grand Tourer-ul care combină eleganța cu performanța. Cu designul său timeless și tehnologia de vârf, Roma reprezintă celebra tradiție Ferrari într-o formă modernă și sofisticată, oferind comfort pe distanțe lungi fără a compromis performanța.'
-    },
-    'mercedes-g63': {
-        id: 'mercedes-g63',
-        title: 'Mercedes-AMG G63',
-        brand: 'Mercedes-Benz',
-        price: '€180,000',
-        category: ['suv', 'luxury', 'offroad'],
-        image: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80',
-        specs: {
-            power: '585 CP',
-            acceleration: '4.5s 0-100 km/h',
-            topSpeed: '220 km/h',
-            engine: '4.0L V8 Biturbo',
-            transmission: '9-speed Automatic',
-            drive: 'AWD',
-            consumption: '13.5L/100km',
-            seats: '5'
-        },
-        features: [
-            'AMG Performance Exhaust',
-            'Adaptive Suspension',
-            'Three Differential Locks',
-            'MBUX Infotainment',
-            'Burmester Surround Sound',
-            'Designo Leather',
-            'Panoramic Sunroof',
-            'Off-Road Package'
-        ],
-        description: 'Mercedes-AMG G63 combină puterea brută cu rafinamentul luxury. Legendara capacitate off-road se îmbină cu performanțe de supercar, oferind o prezență impunătoare și capabilități excepționale atât pe asfalt, cât și pe teren accidentat.'
-    },
-    'porsche-taycan': {
-        id: 'porsche-taycan',
-        title: 'Porsche Taycan Turbo',
-        brand: 'Porsche',
-        price: '€160,000',
-        category: ['electric', 'sport', 'sedan'],
-        image: 'https://images.unsplash.com/photo-1593941707882-a5bba5331bd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80',
-        specs: {
-            power: '680 CP',
-            acceleration: '3.2s 0-100 km/h',
-            topSpeed: '260 km/h',
-            range: '450 km',
-            battery: '93.4 kWh',
-            charging: '270 kW DC',
-            drive: 'AWD',
-            transmission: '2-speed Automatic',
-            seats: '4'
-        },
-        description: 'Primul Porsche electric care păstrează ADN-ul brandului cu performanțe explosive și manevrabilitate precisă.'
     }
 };
 
@@ -244,7 +195,6 @@ let appState = {
     isDarkMode: true
 };
 
-// ===== INITIALIZARE APLICAȚIE =====
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
@@ -261,7 +211,6 @@ function initializeApp() {
     }, CONFIG.loadingDelay);
 }
 
-// ===== LOADING SCREEN =====
 function showLoadingScreen() {
     const loadingScreen = document.getElementById('loadingScreen');
     loadingScreen.classList.remove('hidden');
@@ -272,27 +221,19 @@ function hideLoadingScreen() {
     loadingScreen.classList.add('hidden');
 }
 
-// ===== EVENT LISTENERS =====
 function initializeEventListeners() {
-    // Navigație
     setupNavigation();
     
-    // Search cu debounce
     setupSearch();
     
-    // Filtre și sortare
     setupFilters();
     
-    // Mobile menu
     setupMobileMenu();
     
-    // Theme toggle
     setupThemeToggle();
     
-    // Form submission
     setupForms();
     
-    // Scroll events
     setupScrollEvents();
 }
 
@@ -304,13 +245,10 @@ function setupNavigation() {
             e.preventDefault();
             const targetSection = this.getAttribute('href').substring(1);
             
-            // Update active states
             updateActiveNavigation(this);
             
-            // Show target section
             showSection(targetSection);
             
-            // Close mobile menu if open
             if (appState.isMobileMenuOpen) {
                 toggleMobileMenu();
             }
@@ -328,30 +266,25 @@ function setupSearch() {
 }
 
 function setupFilters() {
-    // Filter tabs
     const filterTabs = document.querySelectorAll('.filter-tab');
     filterTabs.forEach(tab => {
         tab.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
             
-            // Update active tab
             filterTabs.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
             
-            // Update filter and refresh models
             appState.currentFilter = filter;
             filterAndDisplayModels();
         });
     });
     
-    // Sort select
     const sortSelect = document.getElementById('sortSelect');
     sortSelect.addEventListener('change', function() {
         appState.currentSort = this.value;
         filterAndDisplayModels();
     });
     
-    // Load more button
     const loadMoreBtn = document.getElementById('loadMoreBtn');
     loadMoreBtn.addEventListener('click', loadMoreModels);
 }
@@ -362,7 +295,6 @@ function setupMobileMenu() {
     
     hamburger.addEventListener('click', toggleMobileMenu);
     
-    // Close mobile menu when clicking outside
     document.addEventListener('click', function(e) {
         if (appState.isMobileMenuOpen && 
             !mobileMenu.contains(e.target) && 
@@ -383,7 +315,6 @@ function setupForms() {
         contactForm.addEventListener('submit', handleContactSubmit);
     }
     
-    // Newsletter form
     const newsletterForms = document.querySelectorAll('.newsletter-form');
     newsletterForms.forEach(form => {
         form.addEventListener('submit', handleNewsletterSubmit);
@@ -391,7 +322,6 @@ function setupForms() {
 }
 
 function setupScrollEvents() {
-    // Hero scroll indicator
     const scrollIndicator = document.querySelector('.hero-scroll');
     if (scrollIndicator) {
         scrollIndicator.addEventListener('click', function() {
@@ -399,24 +329,18 @@ function setupScrollEvents() {
         });
     }
     
-    // Navbar scroll effect
     window.addEventListener('scroll', throttle(handleScroll, 100));
 }
 
-// ===== NAVIGAȚIE ȘI SECTIONS =====
 function updateActiveNavigation(activeLink) {
-    // Update main nav
     const allNavLinks = document.querySelectorAll('.nav-link');
     allNavLinks.forEach(link => link.classList.remove('active'));
     
-    // Update mobile nav
     const allMobileLinks = document.querySelectorAll('.mobile-nav-link');
     allMobileLinks.forEach(link => link.classList.remove('active'));
     
-    // Set active state
     activeLink.classList.add('active');
     
-    // Also update corresponding link in other menu
     const href = activeLink.getAttribute('href');
     const correspondingLink = document.querySelector(`[href="${href}"]:not(.${activeLink.classList[0]})`);
     if (correspondingLink) {
@@ -425,16 +349,13 @@ function updateActiveNavigation(activeLink) {
 }
 
 function showSection(sectionId) {
-    // Hide all sections
     const allSections = document.querySelectorAll('.section');
     allSections.forEach(section => section.classList.remove('active'));
     
-    // Show target section
     const targetSection = document.getElementById(sectionId);
     if (targetSection) {
         targetSection.classList.add('active');
         
-        // Special handling for models section
         if (sectionId === 'models') {
             filterAndDisplayModels();
         }
@@ -451,9 +372,7 @@ function scrollToSection(sectionId) {
     }
 }
 
-// ===== HERO SLIDER =====
 function initializeHeroSlider() {
-    // Start automatic slideshow
     setInterval(() => {
         changeHeroSlide(1);
     }, CONFIG.heroSlideInterval);
@@ -463,7 +382,6 @@ function changeHeroSlide(direction) {
     const slides = document.querySelectorAll('.hero-slide');
     const totalSlides = slides.length;
     
-    // Calculate new slide index
     let newIndex = appState.currentHeroSlide + direction;
     
     if (newIndex >= totalSlides) {
@@ -472,14 +390,12 @@ function changeHeroSlide(direction) {
         newIndex = totalSlides - 1;
     }
     
-    // Update slides
     slides[appState.currentHeroSlide].classList.remove('active');
     slides[newIndex].classList.add('active');
     
     appState.currentHeroSlide = newIndex;
 }
 
-// ===== MANAGEMENT MODELE =====
 function loadInitialModels() {
     appState.displayedModels = CONFIG.modelsPerLoad;
     filterAndDisplayModels();
@@ -489,7 +405,6 @@ function loadMoreModels() {
     appState.displayedModels += CONFIG.modelsPerLoad;
     filterAndDisplayModels();
     
-    // Scroll to newly loaded models
     setTimeout(() => {
         const modelsGrid = document.getElementById('modelsGrid');
         if (modelsGrid) {
@@ -505,27 +420,21 @@ function filterAndDisplayModels(searchTerm = '') {
     const modelsGrid = document.getElementById('modelsGrid');
     if (!modelsGrid) return;
     
-    // Get filtered and sorted cars
     let cars = getFilteredCars(searchTerm);
     cars = getSortedCars(cars);
     
-    // Limit to currently displayed count
     const carsToShow = cars.slice(0, appState.displayedModels);
     
-    // Update UI
     displayModels(carsToShow, modelsGrid);
     
-    // Update load more button
     updateLoadMoreButton(cars.length);
 }
 
 function getFilteredCars(searchTerm) {
     return Object.values(CAR_DATABASE).filter(car => {
-        // Filter by category
         const categoryMatch = appState.currentFilter === 'all' || 
                             car.category.includes(appState.currentFilter);
         
-        // Filter by search term
         const searchMatch = !searchTerm || 
                            car.title.toLowerCase().includes(searchTerm) ||
                            car.brand.toLowerCase().includes(searchTerm) ||
@@ -545,7 +454,7 @@ function getSortedCars(cars) {
             return cars.sort((a, b) => parseFloat(b.specs.power) - parseFloat(a.specs.power));
         case 'newest':
         default:
-            return cars; // Already in creation order
+            return cars;
     }
 }
 
@@ -563,7 +472,6 @@ function displayModels(cars, container) {
     
     container.innerHTML = cars.map(car => createModelCard(car)).join('');
     
-    // Add event listeners to new cards
     attachModelCardEvents();
 }
 
@@ -618,11 +526,9 @@ function createModelCard(car) {
 }
 
 function attachModelCardEvents() {
-    // Card click events
     const modelCards = document.querySelectorAll('.model-card');
     modelCards.forEach(card => {
         card.addEventListener('click', function(e) {
-            // Don't trigger if clicking buttons
             if (!e.target.closest('.btn-details') && !e.target.closest('.btn-favorite')) {
                 const carId = this.getAttribute('data-car-id');
                 openCarModal(carId);
@@ -642,7 +548,6 @@ function updateLoadMoreButton(totalCars) {
     }
 }
 
-// ===== FAVORITE SYSTEM =====
 function toggleFavorite(carId) {
     if (appState.favoriteCars.has(carId)) {
         appState.favoriteCars.delete(carId);
@@ -650,13 +555,11 @@ function toggleFavorite(carId) {
         appState.favoriteCars.add(carId);
     }
     
-    // Update UI
     const favoriteBtn = document.querySelector(`[onclick="toggleFavorite('${carId}')"]`);
     if (favoriteBtn) {
         favoriteBtn.classList.toggle('active');
     }
     
-    // Save to localStorage
     saveFavorites();
 }
 
@@ -671,7 +574,6 @@ function loadFavorites() {
     }
 }
 
-// ===== MODALE =====
 function openVideoModal() {
     const modal = document.getElementById('videoModal');
     modal.classList.add('active');
@@ -760,7 +662,6 @@ function createCarModalContent(car) {
     `;
 }
 
-// ===== THEME MANAGEMENT =====
 function initializeTheme() {
     const savedTheme = localStorage.getItem('motorvibe_theme');
     if (savedTheme) {
@@ -796,7 +697,6 @@ function saveTheme() {
     localStorage.setItem('motorvibe_theme', appState.isDarkMode ? 'dark' : 'light');
 }
 
-// ===== MOBILE MENU =====
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobileMenu');
     const hamburger = document.querySelector('.nav-hamburger');
@@ -804,7 +704,6 @@ function toggleMobileMenu() {
     appState.isMobileMenuOpen = !appState.isMobileMenuOpen;
     mobileMenu.classList.toggle('active');
     
-    // Animate hamburger
     const spans = hamburger.querySelectorAll('span');
     if (appState.isMobileMenuOpen) {
         spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
@@ -817,7 +716,6 @@ function toggleMobileMenu() {
     }
 }
 
-// ===== FORM HANDLING =====
 function handleContactSubmit(e) {
     e.preventDefault();
     
@@ -829,7 +727,6 @@ function handleContactSubmit(e) {
         message: formData.get('message') || e.target.querySelector('textarea').value
     };
     
-    // Simulate form submission
     showNotification('Mesajul tău a fost trimis cu succes!', 'success');
     e.target.reset();
 }
@@ -838,7 +735,6 @@ function handleNewsletterSubmit(e) {
     e.preventDefault();
     const email = e.target.querySelector('input[type="email"]').value;
     
-    // Simulate subscription
     showNotification('Te-ai abonat cu succes la newsletter!', 'success');
     e.target.reset();
 }
@@ -849,7 +745,6 @@ function handleTestDrive(carId) {
     closeCarModal();
 }
 
-// ===== SCROLL HANDLING =====
 function handleScroll() {
     const navbar = document.querySelector('.navbar');
     const scrollY = window.scrollY;
@@ -863,7 +758,6 @@ function handleScroll() {
     }
 }
 
-// ===== UTILITARE =====
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -951,7 +845,6 @@ function formatSpecKey(key) {
 }
 
 function showNotification(message, type = 'info') {
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
@@ -961,13 +854,10 @@ function showNotification(message, type = 'info') {
         </div>
     `;
     
-    // Add to page
     document.body.appendChild(notification);
     
-    // Animate in
     setTimeout(() => notification.classList.add('show'), 100);
     
-    // Remove after delay
     setTimeout(() => {
         notification.classList.remove('show');
         setTimeout(() => {
@@ -978,59 +868,13 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
-// ===== STILURI NOTIFICĂRI (adaugă în CSS) =====
-const notificationStyles = `
-.notification {
-    position: fixed;
-    top: 100px;
-    right: 20px;
-    background: var(--dark);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-md);
-    padding: var(--space-md);
-    box-shadow: var(--shadow-lg);
-    z-index: 3000;
-    transform: translateX(400px);
-    transition: transform 0.3s ease;
-    max-width: 350px;
-}
-
-.notification.show {
-    transform: translateX(0);
-}
-
-.notification-success {
-    border-left: 4px solid var(--accent);
-}
-
-.notification-content {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    color: var(--light);
-}
-
-.notification-content i {
-    color: var(--accent);
-}
-`;
-
-// Adaugă stilurile notificărilor
-const styleSheet = document.createElement('style');
-styleSheet.textContent = notificationStyles;
-document.head.appendChild(styleSheet);
-
-// ===== INITIALIZARE FINALĂ =====
-// Load favorites on start
 loadFavorites();
 
-// Error handling
 window.addEventListener('error', function(e) {
     console.error('Error:', e.error);
     showNotification('A apărut o eroare. Încarcă din nou pagina.', 'error');
 });
 
-// Export functions for global access
 window.scrollToSection = scrollToSection;
 window.openVideoModal = openVideoModal;
 window.closeVideoModal = closeVideoModal;
