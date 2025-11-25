@@ -101,7 +101,7 @@ const CAR_DATABASE = {
         brand: 'Audi',
         price: '€145,000',
         category: ['electric', 'sport', 'gran-turismo'],
-        image: 'https://images.unsplash.com/photo-1617814076660-1edc47113c02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80',
+        image: 'https://images.unsplash.com/photo-1654853976163-7ecedd0dd4d3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXVkaSUyMHJzJTIwZS10cm9uJTIwZ3R8ZW58MHx8MHx8fDA%3D',
         specs: {
             power: '637 CP',
             acceleration: '3.1s 0-100 km/h',
